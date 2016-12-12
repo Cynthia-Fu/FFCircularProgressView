@@ -329,16 +329,13 @@
     if (progress > 1.0) progress = 1.0;
     
     if (_progress != progress) {
-        _progress = progress;
         
         if (_progress == 1.0) {
             [self animateProgressBackgroundLayerFillColor];
-        }
-        
-        if (_progress == 0.0) {
+        }else if (_progress == 0.0) {
             _progressBackgroundLayer.fillColor = self.backgroundColor.CGColor;
         }
-        
+        _progress = progress;
         [self setNeedsDisplay];
     }
 }

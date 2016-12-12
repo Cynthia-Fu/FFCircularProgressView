@@ -137,6 +137,18 @@
     
     [_progressLayer setPath:processPath.CGPath];
 
+    if(self.progress == 1){
+        _circularState = FFCircularStateCompleted;
+    }else if(self.progress == 0){
+        _circularState = FFCircularStateIcon;
+    }else{
+        _circularState = FFCircularStateStop;
+    }
+    
+    if(self.isAnimatingProgressBackgroundLayerFillColor){
+        [self stopAnimatingProgressBackgroundLayerFillColor];
+    }
+    
     switch (_circularState) {
         case FFCircularStateStop:
              [self drawStop];
